@@ -2,14 +2,36 @@
 
 int main()
 {
-    float preco, percentual, desconto, valortirado, preco2;
-    printf("Digite o valor do produto: ");
-    scanf("%f", &preco);
-    printf("Digite o percentual de desconto: ");
-    scanf("%f", &percentual);
-    desconto = percentual / 100;
-    valortirado = preco * desconto;
-    preco2 = preco - preco2;
-    printf("Valor do produto com desconto: R$%.2f", preco2);
-    return 0;
+    int x, y;
+    printf("Digite as coordenadas de x e y:\n");
+    scanf("%d%d", &x, &y);
+    if (x == 0 && y == 0)
+    {
+        printf("Origem.");
+    }
+    else if (y == 0)
+    {
+        printf("Eixo x");
+    }
+    else if (x == 0)
+    {
+        printf("Eixo y");
+    }
+    else if (x > 0 && y > 0)
+    {
+        printf("Primeiro quadrante.");
+    }
+    else if (x < 0 && y > 0)
+    {
+        printf("Segundo quadrante.");
+    }
+    else if (x < 0 && y < 0)
+    {
+        printf("Terceiro quadrante.");
+    }
+    else 
+    {
+        printf("Quarto quadrante.");
+    }
+    return 0;   
 }

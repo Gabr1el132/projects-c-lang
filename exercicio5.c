@@ -2,13 +2,20 @@
 
 int main()
 {
-    float valor, gasto, troco;
-    int pedidos;
-    printf("Digite o valor que voce vai usar (multiplo de 5): ");
-    scanf("%f", &valor);
-    pedidos = valor / 7;
-    gasto = pedidos * 7;
-    troco = valor - gasto;
-    printf("O valor perdido no troco corresponde a R$%.2f", troco);
+    float lado1, lado2, lado3;
+    printf("Digite o valor dos 3 lados do triangulo:\n");
+    scanf("%f%f%f", &lado1, &lado2, &lado3);
+    if (lado1 == lado2 && lado2 == lado3)
+    {
+       printf("Triangulo equilatero.");
+    }
+    else if ((lado1 == lado2 && lado1 != lado3) || (lado3 == lado2 && lado1 != lado3) || (lado1 == lado3 && lado2 != lado3))
+    {
+        printf("Triangulo isosceles.");
+    }
+    else
+    {
+        printf("Triangulo escaleno.");
+    }
     return 0;
 }
