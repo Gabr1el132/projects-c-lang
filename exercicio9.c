@@ -1,37 +1,30 @@
 #include <stdio.h>
 
-int main()
-{
-    int x, y;
-    printf("Digite as coordenadas de x e y:\n");
-    scanf("%d%d", &x, &y);
-    if (x == 0 && y == 0)
-    {
-        printf("Origem.");
+int maiorElemento(int *vet, int tam);
+
+int main() {
+    int n;
+    printf("Digite o tamanho do array: ");
+    scanf("%d", &n);
+
+    int vet[n];
+    for (int i = 0; i < n; i++) {
+        printf("Digite o valor da posição %d: ", i);
+        scanf("%d", &vet[i]);
     }
-    else if (y == 0)
-    {
-        printf("Eixo x");
+
+    printf("O maior elemento do array é: %d\n", maiorElemento(vet, n));
+    return 0;
+}
+
+int maiorElemento(int *vet, int tam) {
+    if (tam == 1) {
+        return vet[0]; 
     }
-    else if (x == 0)
-    {
-        printf("Eixo y");
+    int maiorDosRestantes = maiorElemento(vet, tam - 1);
+    if (vet[tam - 1] > maiorDosRestantes) {
+        return vet[tam - 1];
+    } else {
+        return maiorDosRestantes;
     }
-    else if (x > 0 && y > 0)
-    {
-        printf("Primeiro quadrante.");
-    }
-    else if (x < 0 && y > 0)
-    {
-        printf("Segundo quadrante.");
-    }
-    else if (x < 0 && y < 0)
-    {
-        printf("Terceiro quadrante.");
-    }
-    else 
-    {
-        printf("Quarto quadrante.");
-    }
-    return 0;   
 }

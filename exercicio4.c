@@ -1,28 +1,22 @@
 #include <stdio.h>
-#include <math.h>
 
-int main()
-{
-    float a, b, c, delta, raiz1, raiz2;
-    printf("Digite os coeficientes de a, b e c:\n");
-    scanf("%f%f%f", &a, &b, &c);
-    if ((a != 0) && (b == 0 || c == 0))
-    {
-        printf("Nao eh uma equacao de segundo grau.");
-    }
-    else
-    {
-        delta = pow(b, 2) - 4 * a * c;
-        if (delta > 0)
-        {
-            raiz1 = (-(b) + sqrt(delta)) / (2 * a); 
-            raiz2 = (-(b) - sqrt(delta)) / (2 * a); 
-            printf("Raiz 1: %.1f\nRaiz 2: %.1f", raiz1, raiz2);
-        }
-        else
-        {
-            printf("A equacao nao possui raizes reais para o delta %.1f.", delta);   
-        }
-    }
+int mult(int num1, int num2);
+
+int main(){
+    int n1, n2, resultado;
+    printf("Digite dois numeros: ");
+    scanf("%d%d", &n1, &n2);
+    resultado = mult(n1, n2);
+    printf("%d x %d = %d", n1, n2, resultado);
     return 0;
+}
+
+int mult(int num1, int num2) {
+    if (num2 == 0) {
+        return 0; 
+    } else if (num2 > 0) {
+        return num1 + mult(num1, num2 - 1); 
+    } else { 
+        return -mult(num1, -num2);
+    }
 }

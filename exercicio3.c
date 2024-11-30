@@ -1,22 +1,27 @@
 #include <stdio.h>
 
-int main()
-{
-    float n1, n2, n3, media;
-    printf("Digite 3 numeros:\n");
-    scanf("%f%f%f", &n1, &n2, &n3);
-    media = (n1 + n2 + n3)/ 3;
-    if ((n1 > media && n2 > media) || (n1 > media && n3 > media) || (n2 > media && n3 > media))
-    {
-        printf("Dois numeros estao acima da media aritmetica.");
+void divBinario(int n);
+
+int main(){
+    int n;
+    printf("Digite um numero inteiro: ");
+    scanf("%d", &n);
+    if (n == 0){
+        printf("0");
     }
-    else if ((n1 > media) || (n2 > media) || (n3 > media))
-    {
-        printf("Apenas um numero esta acima da media aritmetica.");
-    }
-    else
-    {
-        printf("Nenhum dos numeros esta acima da media aritmetica.");
+    else{
+        printf("%d em binario: ", n);
+        divBinario(n);
     }
     return 0;
+}
+
+void divBinario(int n){
+    if (n == 0){
+        return;
+    }
+    else{
+        divBinario(n / 2);
+        printf("%d", n % 2);
+    }
 }

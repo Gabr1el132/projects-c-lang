@@ -1,21 +1,26 @@
 #include <stdio.h>
 
-int main()
-{
-    float lado1, lado2, lado3;
-    printf("Digite o valor dos 3 lados do triangulo:\n");
-    scanf("%f%f%f", &lado1, &lado2, &lado3);
-    if (lado1 == lado2 && lado2 == lado3)
+int somaArray(int n, int array[]);
+
+int main(){
+    int n;
+    printf("Digite o tamanho do array:");
+    scanf("%d", &n);
+    int array[n];
+    for (int i = 0; i < n; i++)
     {
-       printf("Triangulo equilatero.");
+        printf("Digite o valor da posicao %d do array: ", i);
+        scanf("%d", &array[i]);
     }
-    else if ((lado1 == lado2 && lado1 != lado3) || (lado3 == lado2 && lado1 != lado3) || (lado1 == lado3 && lado2 != lado3))
-    {
-        printf("Triangulo isosceles.");
+    printf("Soma dos valores do array: %d", somaArray(n, array));
+}
+
+int somaArray(int n, int array[]){
+    int soma = 0;
+    if (n == 0){
+        return 0;
     }
-    else
-    {
-        printf("Triangulo escaleno.");
+    else{
+        return array[n-1] + somaArray(n-1, array);
     }
-    return 0;
 }

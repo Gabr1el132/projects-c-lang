@@ -1,25 +1,28 @@
 #include <stdio.h>
+#include <string.h>
 
-int main()
-{
-    int ig, ia, enc, ind, structs;
-    printf("Digite 1 caso o requisito tenha sido atingido e 0 caso nao.\nInterface grafica: ");
-    scanf("%d", &ig);
-    printf("Inteligencia Artificial: ");
-    scanf("%d", &ia);
-    printf("Encapsulamento: ");
-    scanf("%d", &enc);
-    printf("Indentacao: ");
-    scanf("%d", &ind);
-    printf("Uso de Structs: ");
-    scanf("%d", &structs);
-    if ((ig == 1 || ia == 1) && (enc == 1 && ind == 1) && (structs == 1))
-    {
-        printf("O trabalho sera avaliado.");
+void inverteString(char str[], int inicio, int fim);
+
+int main() {
+    char str[100];
+    printf("Digite uma string: ");
+    fgets(str, sizeof(str), stdin);
+    size_t tamanho = strlen(str);
+    if (str[tamanho - 1] == '\n') {
+        str[tamanho - 1] = '\0';
+        tamanho--; 
     }
-    else
-    {
-        printf("Zero.");
-    }
+    inverteString(str, 0, tamanho - 1);
+    printf("String invertida: %s\n", str);
     return 0;
+}
+
+void inverteString(char str[], int inicio, int fim) {
+    if (inicio >= fim) {
+        return; 
+    }
+    char temp = str[inicio];
+    str[inicio] = str[fim];
+    str[fim] = temp;
+    inverteString(str, inicio + 1, fim - 1);
 }
